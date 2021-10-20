@@ -1,0 +1,61 @@
+@keyframes shade-on {
+    from {
+      opacity: 0; 
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+@keyframes shade-off {
+    from {
+        opacity: 1; 
+      }
+    to {
+      opacity: 0;
+    }
+}
+
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.modal.active {
+    animation: shade-on 0.3s;
+}
+.modal.off {
+    animation: shade-off 0.3s;
+}
+
+.modal__content {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    pointer-events: all;  
+}
+
+.blur {
+    animation: shade-on 0.3s;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(3px);
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+}

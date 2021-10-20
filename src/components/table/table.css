@@ -1,0 +1,51 @@
+table {
+    /* border: 1px solid white; */
+    width: 100%;
+    border-collapse: collapse;
+    color: rgb(72, 82, 112);
+    /* border: 1px solid black; */
+    /* border-collapse: collapse; */
+    
+}
+thead {
+    height: 3em;
+}
+
+thead th:nth-child(1) {
+    width: 40%;
+}
+thead th:nth-child(2) {
+    width: 20%;
+}
+thead th:nth-child(3) {
+    width: 40%;
+}
+th {
+    background-color: rgb(180, 200, 250);
+    color: white;
+}
+td {
+    background-color: rgba(180, 200, 250, 0.3);
+    border-radius: 5px;
+}
+
+th, td {
+    border: 4px solid white;
+    padding: 0.5em;
+    margin: 1em;
+}
+
+
+.sort-icon {
+    color: rgb(190, 190, 190);
+    padding: 10px;
+}
+.sort-icon:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.sort-icon.active {
+    color: white;
+}
+
