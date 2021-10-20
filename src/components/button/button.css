@@ -1,0 +1,21 @@
+.default {
+    height: 2em;
+    color: white;
+    background-color: rgb(180, 200, 250);
+    font-size: 1em;
+    min-width: 100px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.default:active {
+    background-color:rgb(120, 134, 170);
+}
+
+.delete {
+    background-color: rgb(255, 136, 132);
+}
+

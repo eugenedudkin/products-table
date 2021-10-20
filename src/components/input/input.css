@@ -1,0 +1,75 @@
+.inputlabel {
+    width: 30%;
+    /* flex-basis: 25; */
+    /* flex-grow: 1; */
+    /* box-sizing: content-box; */
+    
+}
+.inputDiv {
+    height: 4em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    
+}
+.input {
+    width: 100%;
+    font: inherit;
+    
+    /* border: 1px solid black; */
+    height: 2em;
+    background: none;
+    background-color: #eee;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 0;
+    /* color: #000; */
+}
+.input:focus {
+    background-color: rgb(180, 200, 250);
+    /* border: 1px solid wheat; */
+    outline: none;
+}
+
+.input:focus::-webkit-input-placeholder {
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    
+}
+.input:hover {
+    background-color: rgb(180, 200, 250);
+    /* border: 1px solid wheat; */
+    outline: none;
+}
+
+
+
+.input.error {
+    /* border: 1px solid red; */
+    background-color: rgb(255, 136, 132);
+    color: white;
+}
+
+
+.errSpan {
+    /* display: flex; */
+    /* flex-grow: 1; */
+    position: relative;
+    flex-basis: 0;
+    flex-grow: 2;
+    
+    margin-top: 1.6em;
+    padding-left: 1.5em;
+    color: red;
+    /* white-space: */
+    width: 50%;
+    /* margin-left: 1em; */
+    box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

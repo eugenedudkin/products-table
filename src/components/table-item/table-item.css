@@ -1,0 +1,26 @@
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+td:nth-child(2) {
+    text-align: center;
+}   
+
+.quantity {
+    margin-left: auto;
+    background-color: cornflowerblue;
+    min-width: 1.5em;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+}
+.itemTag{
+    cursor: pointer;
+}
+.itemTag:hover{
+    font-weight: bold;
+}

@@ -1,0 +1,29 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Товар 1",
+            "quantity": 2,
+            "email": "test@example.com",
+            "price": 153.31,
+            "delivery": ["Саратов", "Москва", "Питер"]                  
+        },
+        {
+            "id": 2,
+            "name": "Товар 2",
+            "quantity": 3,
+            "email": "test@example.com",
+            "price": 23.55,
+            "delivery": ["Саратов"]            
+        },
+        {
+            "id": 3,
+            "name": "Товар 3",
+            "quantity": 44,
+            "email": "test@example.com",
+            "price": 1233.34,
+            "delivery": []
+        }  
+    ]
+}
+
