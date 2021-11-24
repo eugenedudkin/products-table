@@ -21,6 +21,7 @@ const Delivery: FC<DeliveryProps> = (props: DeliveryProps) => {
 
   useEffect(() => {
     setDelivery(checkedCities);
+    deliveryValidate("")
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkedCities.length]);
 
@@ -33,12 +34,25 @@ const Delivery: FC<DeliveryProps> = (props: DeliveryProps) => {
   const filteredCities = filterCities(country);
 
   const onBlurContainer = (e: FocusEvent<HTMLDivElement>) => {
-    return country !== "" && checkedCities.length === 0
+    if(e.relatedTarget !== null) {
+      const { className } = e.relatedTarget as HTMLDivElement
+      if(className === "deliveryContainer") {
+        e.preventDefault()
+        return 0;
+      }
+    }
+    return country !== "" && checkedCities.length === 0 
         ? deliveryValidate("Небходимо выбрать город!")
         : deliveryValidate("")
   }
+
   const onFocusContainer = (e: FocusEvent<any>) => {
+    // deliveryValidate("")
+  }
+
+  const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     deliveryValidate("")
+
   }
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -72,6 +86,7 @@ const Delivery: FC<DeliveryProps> = (props: DeliveryProps) => {
   return (
     <div 
       tabIndex={0}
+      onMouseDown={onClickHandler}
       onFocus={onFocusContainer} 
       onBlur ={onBlurContainer} 
       className="deliveryContainer">

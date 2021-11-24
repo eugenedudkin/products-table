@@ -25,6 +25,7 @@
     "bfj": "^7.0.2",
     "camelcase": "^6.1.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "cross-env": "^7.0.3",
     "css-loader": "4.3.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
@@ -80,7 +81,9 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "json-server":"json-server --watch src/mock/data.json --port 3001",
+    "start": "concurrently \"npm run start-script\" \"npm run json-server\"",
+    "start-script": "node scripts/start.js",
     "test": "node scripts/test.js",
     "build:dev": "cross-env NODE_ENV=development BABEL_ENV=development node scripts/build.js",
     "build:prod": "cross-env NODE_ENV=production BABEL_ENV=production node scripts/build.js",

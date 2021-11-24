@@ -1,18 +1,26 @@
-import { ChangeEvent, FC } from 'react';
-import { Link } from 'react-router-dom';
+import React, { ChangeEvent, FC } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import './item-filter.css';
 import Button from '../button';
 
 const ItemFilter: FC = () => {
 
+    const history = useHistory();
     const [searchStr, setSearchStr] = useState<string>("");
+    const urlStr: string = encodeURI(`/search?q=${searchStr}`);
 
-    const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchStr(e.target.value)
     };
+    
+    const keyHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") searchHandler();
+    };
 
-    const urlStr: string = encodeURI(`/search?q=${searchStr}`);
+    const searchHandler = () => {
+        searchStr !== "" ? history.push(urlStr) : history.push("")
+    };
 
     return (
             <div className="filter-container">
@@ -20,7 +28,8 @@ const ItemFilter: FC = () => {
                     className="input" 
                     type="text"
                     placeholder="Введите название товара"
-                    onChange={searchHandler}
+                    onKeyDown={keyHandler}
+                    onChange={searchInputHandler}
                     />
                 <Link 
                     className='' 

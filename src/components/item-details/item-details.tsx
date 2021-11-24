@@ -8,8 +8,10 @@ import Button from '../button';
 import Delivery from '../delivery';
 import Input from '../input';
 import './item-details.css';
+import { useHistory } from 'react-router-dom';
 
 const ItemDetails: IItemDetails = ({id, close}) => {
+    let history = useHistory();
     const foundItemArr: ItemData[] = useSelector((state: any) => 
             state.items.filter((item: any) => item.id === id))
     const dispatch = useDispatch();
@@ -50,7 +52,10 @@ const ItemDetails: IItemDetails = ({id, close}) => {
         delivery = []
     } = state;
 
-    const closeHandler = () => close();
+    const closeHandler = () => {
+        close();
+        history.push("/");
+    };
 
     const checkEmptyFields = () => {
         for (const [, value] of Object.entries(state)) {
@@ -144,6 +149,7 @@ const ItemDetails: IItemDetails = ({id, close}) => {
             ? dispatch(setData(state))
             : dispatch(changeItem(state))
         close();
+        history.push("/");
     };
 
     return (

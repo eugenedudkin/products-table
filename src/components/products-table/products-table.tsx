@@ -1,13 +1,22 @@
 import Table from "../table";
 import SearchPanel from "../search-panel";
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { RootState } from "../../store";
 import { ItemData } from "../../store/types";
 import './products-table.css'
+import { useParams } from "react-router-dom";
+import { useModal } from "../modal/modalProvider";
+import ItemDetails from "../item-details";
 
 const ProductsTable: FC = () => {
+    let history = useHistory();
+
+    const [loading, setLoading] = useState(true);
+
+    const { id } = useParams<any>();
+    const { openModal, closeModal } = useModal();
 
     const queryString: string = useLocation().search;
     const queryData = convertQueryToObject(queryString);
@@ -17,6 +26,24 @@ const ProductsTable: FC = () => {
     const filteredData = !!searchStr 
         ? items.filter((item: ItemData) => item.name.includes(searchStr))
         : items;
+
+    const isIdValid = items.filter((item: ItemData) => item.id === +id).length > 0
+
+    const openIdModal = () => {
+        const editProps = {id: +id, close: closeModal};
+        openModal(ItemDetails, editProps);
+    }
+
+    useEffect(() => {
+        if (loading && items.length !== 0) {
+            setLoading(false)
+        }
+    }, [items.length, loading])
+
+    useEffect(() => {
+        if (!!id && !loading) {isIdValid ? openIdModal() : history.push("/error")}
+    // eslint-disable-next-line
+    }, [loading])
     
     return (
         <div className="productsTable">
@@ -26,7 +53,8 @@ const ProductsTable: FC = () => {
                 && <Table 
                         items={filteredData }
                         />}
-            {filteredData.length === 0 && <p>Ничего не найдено</p>}
+            {filteredData.length === 0 && !loading && <p>Ничего не найдено</p>}
+            {loading && "Loading..."}
         </div>
     )
 }

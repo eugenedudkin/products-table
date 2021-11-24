@@ -6,7 +6,8 @@
   height: 250px;
   margin-bottom: 1em;
 }
-.errDelivery {
+.errDelivery { 
+  transition: outline 0.2s ease;
   outline: rgba(255, 136, 132, 1) solid 5px;
 }
 

@@ -7,6 +7,7 @@ import { useModal } from '../modal/modalProvider';
 import ItemDetails from "../item-details";
 import { ItemData } from '../../store/types';
 import { FC } from "react";
+import { useHistory } from "react-router-dom";
 
 type TableItemProps = {
     itemData: ItemData;
@@ -14,7 +15,7 @@ type TableItemProps = {
 }
 
 const TableItem: FC<TableItemProps> = ({itemData}: TableItemProps) => {
-
+    let history = useHistory();
     const dispatch = useDispatch();
     const {name, id, price} = itemData;
 
@@ -30,7 +31,7 @@ const TableItem: FC<TableItemProps> = ({itemData}: TableItemProps) => {
     const editHandler = () => {
         const editProps = {id, close: closeModal};
         openModal(ItemDetails, editProps);
-
+        history.push(`/id${id}`)
     };
     const deleteHandler = () => {
         const delProps = {close: closeModal, onOk, confirmText};
