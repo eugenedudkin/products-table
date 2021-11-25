@@ -1,19 +1,15 @@
 import { call, put, takeEvery } from "redux-saga/effects";
+import { getApi } from "../api";
 // import jsonDelivery from '../mock/delivery.json';
 import { FETCH_DELIVERY, setDelivery, failedFetchDelivery } from '../store/deliveryReducer';
 
-const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
-
-const getDelivery = () => fetch(`http://localhost:3001/delivery`)
-    .then((response) => {
-        return response.json();
-    });
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
 function* fetchMockDeliveryWorker(): any {
     try {
         yield delay(1000);
         // const {delivery} = jsonDelivery;
-        const delivery = yield call(getDelivery);
+        const delivery = yield call(getApi, "delivery");
         yield put(setDelivery(delivery));
     } catch(error) {
         yield put(failedFetchDelivery(error))

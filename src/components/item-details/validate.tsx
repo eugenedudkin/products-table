@@ -10,7 +10,7 @@ const validate = (funcName: string, funcProps: string) => {
 }
 
 const nameValidate = (str: string) => {
-    const reg = /^[a-Я\d]/;
+    const reg = /^[a-zA-Zа-яА-Я\d]/;
     if (str.length > 15) {
         return {err: true,
         errMsg: "Поле должно содержать не более 15 символов!"}

@@ -13,6 +13,7 @@ import ItemDetails from "../item-details";
 const ProductsTable: FC = () => {
     let history = useHistory();
 
+
     const [loading, setLoading] = useState(true);
 
     const { id } = useParams<any>();

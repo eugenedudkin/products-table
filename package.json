@@ -39,6 +39,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.9.2",
     "eslint-webpack-plugin": "^2.5.2",
+    "faker": "^5.5.3",
     "file-loader": "6.1.1",
     "fs-extra": "^9.0.1",
     "html-webpack-plugin": "4.5.0",
@@ -81,7 +82,7 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "json-server":"json-server --watch src/mock/data.json --port 3001",
+    "json-server": "json-server --watch src/mock/index.js --port 3001",
     "start": "concurrently \"npm run start-script\" \"npm run json-server\"",
     "start-script": "node scripts/start.js",
     "test": "node scripts/test.js",
@@ -108,6 +109,7 @@
     ]
   },
   "devDependencies": {
+    "@types/faker": "^5.5.9",
     "dotenv-cli": "^4.0.0"
   },
   "jest": {

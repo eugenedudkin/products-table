@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ChangeEvent, RefObject, useRef, useState } from 'react';
-import { changeItem, setData } from '../../store/dataReducer';
+import { changeItem, setData, setItem } from '../../store/dataReducer';
 import validate from './validate';
 import { CurrencyInput, IntNumberInput } from '../input/input';
 import { ItemData } from '../../store/types';
@@ -146,7 +146,7 @@ const ItemDetails: IItemDetails = ({id, close}) => {
         }
 
         foundItemArr.length === 0 
-            ? dispatch(setData(state))
+            ? dispatch(setItem(state))
             : dispatch(changeItem(state))
         close();
         history.push("/");
